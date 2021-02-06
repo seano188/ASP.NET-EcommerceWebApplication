@@ -11,10 +11,10 @@ Some of the basic functionalities developed includes:
 7. Providing reviews for products
 
 The log in and payment details are as follows:
-Log in details:
+1. Log in details:
 - User: admin, Password: 1q@w3e$R
 - User: Sankalp, Password: password1
-- c. User: seanooi, Password: password2
+- User: seanooi, Password: password2
   
 2. Payment details:
 - Email: any yahoo or hotmail emails
