@@ -10,7 +10,7 @@ Some of the basic functionalities developed includes:
 6. Displaying the user's order history
 7. Providing reviews for products
 
-**The log in and payment details are as follows:
+**The log in and payment details are as follows:**
 1. Log in details:
 - User: admin, Password: 1q@w3e$R
 - User: Sankalp, Password: password1
