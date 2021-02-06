@@ -11,13 +11,13 @@ Some of the basic functionalities developed includes:
 7. Providing reviews for products
 
 The log in and payment details are as follows:
-1. Log in details:
-  a. User: admin, Password: 1q@w3e$R
-  b. User: Sankalp, Password: password1
-  c. User: seanooi, Password: password2
+Log in details:
+- User: admin, Password: 1q@w3e$R
+- User: Sankalp, Password: password1
+- c. User: seanooi, Password: password2
   
 2. Payment details:
-  a. Email: any yahoo or hotmail emails
-  b. Card Number: 4242 4242 4242 4242
-  c. CVC: Any 3 digits
-  d. Date: Any future date
+- Email: any yahoo or hotmail emails
+- Card Number: 4242 4242 4242 4242
+- CVC: Any 3 digits
+- Date: Any future date
