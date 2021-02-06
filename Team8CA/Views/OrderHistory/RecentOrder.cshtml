@@ -1,0 +1,87 @@
+﻿@model Order
+@{ 
+    ViewData["Title"] = "RecentOrder";
+    List<Review> customerReviews = (List<Review>)ViewData["customerReviews"];
+}
+
+<style>
+    #customers {
+        border-collapse: collapse;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        table-layout: auto;
+        border: 1px solid lightgray;
+    }
+
+        #customers td, #customers th {
+            padding: 10px;
+            border-bottom: 1px solid lightgray;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+        }
+</style>
+
+<div class="container">
+<table id="customers">
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Total Price</th>
+        <th>Activation Code</th>
+    </tr>
+     @foreach (OrderDetails orders in Model.OrderDetails)
+     {
+            <tr>
+                <td>
+                    <div>
+                        <img src="@orders.Product.ProductPic" style="min-width: 50px; max-width: 100px; display: inline-block">
+                        <div class="pb-2 ml-3 d-inline-block font-weight-bold">@orders.Product.ProductName</div>
+                        <div class="pt-2 d-lg-table-row"><small>@orders.Product.ProductDescription</small></div><br>
+
+                        @if (customerReviews.Any(r => r.ProductID == orders.ProductId && r.OrderId == orders.OrderId))
+                        {
+                            <div><p class="text-muted">You have reviewed this product.</p></div>
+                        }
+                        else
+                        {
+                            <a class="btn btn-success float-right mx-2" id="leave-review" asp-controller="CreateReview" asp-action="Index" asp-route-id="@orders.Product.ProductId">Leave a Review</a>
+                        }
+                        <div class="mx-2">
+                            <a class="btn btn-outline-info float-right " asp-controller="Gallery" asp-action="ProductDetailPage" asp-route-id="@orders.Product.ProductId">View Details</a>
+                        </div>
+                    </div>
+                </td>
+                <td><center>@orders.Quantity</center></td>
+                <td><center>$@orders.Price</center></td>
+                @{ 
+                    double ordertotal = orders.Price * orders.Quantity;
+                }
+                <td><center>$@ordertotal</center></td>
+                <td>
+                    <select>
+                     @{
+                        foreach (var activationcode in orders.ActivationCodes.Where(o=>o.ProductId == orders.ProductId))
+                        {
+                            <option>@activationcode.ActivationCode</option>
+                        }
+                      }
+                    </select>
+                </td>
+            </tr>
+
+      } 
+</table>
+</div>
+

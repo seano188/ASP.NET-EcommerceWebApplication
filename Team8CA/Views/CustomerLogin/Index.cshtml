@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Login Page";
+}
+
+@section Scripts
+{
+    <script src="~/js/login/index.js"></script>
+}
+
+<style>
+    #loginerror {
+        color: red;
+        font-weight: bold;
+        padding: 10px;
+    }
+    .login {
+        margin-top: 75px;
+    }
+    .t8softwares {
+        margin-top: 75px;
+        text-align:center;
+    }
+</style>
+
+<div class="t8softwares">
+    <img src="~/Images/t8software_title.png" height="100" />
+</div>
+
+
+<div class="login">
+    <h3 style="text-align:center">Login</h3><br />
+    <form id="form" action="/CustomerLogin/Authenticate" method="POST">
+        <table align="center">
+            <tr>
+                <td>
+                    Username:
+                </td>
+                <td>
+                    <input id="username" name="username"
+                           class="form-control" value="@ViewData["username"]" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password:
+                </td>
+                <td>
+                    <input id="password" name="password"
+                           type="password" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <input id="submitBtn" type="submit" class="btn btn-success" /><br />
+                    <small><a type="text/html" class="text" asp-controller="Gallery" asp-action="Index">Continue Shopping Without Login</a></small>
+                </td>
+            </tr>
+        </table>
+        <table align="center">
+            <tr>
+                <td colspan="2" align="center">
+                    <div id="err_msg">@ViewData["loginerror"]</div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

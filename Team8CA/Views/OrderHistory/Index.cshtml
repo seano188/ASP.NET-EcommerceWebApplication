@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "OrderHistory";
+    List<Order> orders = (List<Order>)ViewData["order"];
+    int ordercount = orders.Count;
+}
+<style>
+    #customers {
+        border-collapse: collapse;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        table-layout: auto;
+        border: 1px solid lightgray;
+    }
+
+        #customers td, #customers th {
+            padding: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            border-bottom: 1px solid lightgray;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background-color: #343a40;
+            color: white;
+        }
+</style>
+
+@if (ordercount > 0)
+{
+    <body>        
+        <table id="customers">
+            <thead>
+                <tr>
+                    <th>OrderId</th>
+                    <th>Price</th>
+                    <th>Ordered Date</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            @{foreach (Order order in orders)
+
+                {
+                    <tr>
+                        <td>@order.OrderId</td>
+                        <td>$@order.OrderTotal</td>
+                        <td>@order.OrderDate</td>
+                        <td>
+                            <a href=@("/OrderHistory/RecentOrder?OrderId="+@order.OrderId)>View Order Details</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>        
+    </body>
+}
+else
+{
+    <div class="text-center">There are no orders made.</div><br>
+    <div class="text-center"><a type="button" class="btn btn-primary view" asp-controller="Gallery" asp-action="Index">Continue Shopping</a></div>
+}
